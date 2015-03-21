@@ -4,6 +4,30 @@
 #include <time.h>
 #define N 10
 
+/**
+ * @var buffer
+ * @brief Buffer dei numeri generati casualmente.
+ */
+ 
+ /**
+ * @var in
+ * @brief Indice di scrittura.
+ */
+ 
+ /**
+ * @var out
+ * @brief Indice di lettura.
+ */
+ 
+ /**
+ * @var full
+ * @brief indica se il buffer e' pieno.
+ */
+ 
+ /**
+ * @var empty
+ * @brief Indica se il buffer e' vuoto.
+ */ 
 int buffer[N];
 int in,out; //indici scrittura e lettura
 int full; //buffer pieno
@@ -17,6 +41,10 @@ unsigned long WINAPI Produce_thread(void* arg);
 unsigned long WINAPI Consume_thread(void* arg);
 int RandomNumber(int from, int to);
 
+
+/**
+ @brief Funzione principale del programma.
+ */
 int main()
 {   int low, high;
     HANDLE P_thread, C_thread;
@@ -25,20 +53,28 @@ int main()
 	srand(time(NULL));
 	printf("Produttore e Consumatore WIN\n");
 	printf("We have 2 thread one produce other read from buffer\n");	
-    full=FALSE; //buffer pieno NO
-    empty=TRUE; //buffer vuoto SI
-    in=0; //indice di scrittura sul buffer  
-    out=0; //indice di lettura dal buffer
+    full=FALSE; ///buffer pieno NO
+    empty=TRUE; ///buffer vuoto SI
+    in=0; ///indice di scrittura sul buffer  
+    out=0; ///indice di lettura dal buffer
     InitializeCriticalSection(&mutex);
-    // creazione dei thread corrispondenti alle funzioni di lettura, elaborazione e scrittura
+    /// creazione dei thread corrispondenti alle funzioni di lettura, elaborazione e scrittura
     P_thread = CreateThread(NULL, 1024, &Produce_thread, NULL, 0, NULL);
     C_thread = CreateThread(NULL, 1024, &Consume_thread, NULL, 0, NULL);
-    // attesa della terminazione dei thread
+    /// attesa della terminazione dei thread
     WaitForSingleObject(P_thread, INFINITE);
     WaitForSingleObject(C_thread, INFINITE);
     printf("\n...END\n");
     return 0;
 }
+
+/**
+ @brief Funzione del Produttore.
+ @brief Genera un numero casuale controllando che il buffer non sia pieno.
+ @param arg Spazio dove allocare il thread.
+ @return Codice di uscita del thread.
+ 
+*/
 unsigned long WINAPI Produce_thread(void* arg) // Produttore
 {	int r; int i;
 	for(i=0;i<100;i++){
@@ -63,6 +99,13 @@ LeaveCriticalSection(&mutex);
 	ExitThread(0);
 }
 
+/**
+ @brief Funzione del Consumatore.
+ @brief Visualizza i numeri generati casualmente se il buffer non è vuoto.
+ @brief Una volta visualizzato il numero il buffer estrae esso.
+ @param arg Spazio dove allocare il thread.
+ @return Codice di uscita del thread.
+*/ 
 unsigned long WINAPI Consume_thread(void* arg) // Consumatore
 {	int r; int i;
 	for(i=0;i<100;i++){
@@ -87,6 +130,12 @@ LeaveCriticalSection(&mutex);
 	}
 	ExitThread(0);
 }
+
+/**
+ * @brief Funzione che genera un numero casuale.
+ * @param  from,to range di generazione del numero.
+ * @return il numero generato casualmente.
+ */ 
 int RandomNumber(int from, int to)
 {   int r;
 
@@ -161,6 +210,3 @@ thred C()
   }while(1)
 
 */
-
-
-
