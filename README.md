@@ -1,12 +1,18 @@
-# thread-scuola
+# Produttore/Consumatore
+
 ##Autore
     Lena Fabio
 
 ##Data creazione
      28/03/2015
 
-                              VERSIONI DEL PROGRAMMA PRODUTTORE E CONSUMATORE
+##Versioni
+    Ultima versione: 5.0
+    
+    Versioni Precedenti: 1.0 - 2.0 - 3.0 - 4.0
+
 ##Descrizione delle varie versioni
+
 Versione 1 - Prima versione Produttore-Consumatore.
 Non abbiamo ALTERNANZA STRETTA come si vede dall'esecuzione i programmi hanno velocità diverse e quindi l'output non è corretto.
 
