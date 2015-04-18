@@ -1,7 +1,12 @@
 # thread-scuola
+##Autore
+    Lena Fabio
+
+##Data creazione
+     28/03/2015
 
                               VERSIONI DEL PROGRAMMA PRODUTTORE E CONSUMATORE
-
+##Descrizione delle varie versioni
 Versione 1 - Prima versione Produttore-Consumatore.
 Non abbiamo ALTERNANZA STRETTA come si vede dall'esecuzione i programmi hanno velocità diverse e quindi l'output non è corretto.
 
@@ -23,3 +28,6 @@ Superamento dell'attesa attivao busy waiting mediante la CONDITION_VARIABLE che 
 Versione 5 - Produttore e Consumatore.
 L'alternanza stretta fra P e C limita di molto la velocità di esecuzione. Usiamo ora un buffer circolare che permette per brevi periodi velocità diverse fra P e C. Vedi caso tipico del buffer di un HD oppure la stampa.
 NB. Ora sono anche necessarie due variabili diverse per segnalare pienoe vuoto così come per le variabili condition!
+
+
+
